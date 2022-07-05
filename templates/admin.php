@@ -9,6 +9,7 @@ script('bbb', 'restrictions');
 <div id="bbb-settings" class="section">
         <h2>BigBlueButton</h2>
 
+<?php if (isset($_['api.url'])) { ?>
         <p><?php p($l->t('Get your API URL and secret by executing "sudo bbb-conf --secret" on your BigBlueButton server.')); ?></p>
 
         <form id="bbb-api">
@@ -18,6 +19,9 @@ script('bbb', 'restrictions');
 
             <div class="bbb-result"></div>
         </form>
+<?php } else { ?>
+        <p><?php p($l->t('Your BigBlueButton server settings have been set by your administrator.')); ?></p>
+<?php } ?>
 
         <p>
             <input type="checkbox" name="app.navigation" id="bbb-app-navigation" class="checkbox bbb-setting" value="1" <?php p($_['app.navigation']); ?> />

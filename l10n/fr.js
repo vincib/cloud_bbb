@@ -1,6 +1,7 @@
 OC.L10N.register(
     "bbb",
     {
+    "Your BigBlueButton server settings have been set by your administrator." : "Les paramètres serveur de BigBlueButton ont été fixés par l'administrateur.",
     "You created the room %s." : "Vous avez créé la salle %s.",
     "You deleted the room %s." : "Vous avez supprimé la salle %s.",
     "{user} deleted the room %s." : "{user} a supprimé la salle %s.",

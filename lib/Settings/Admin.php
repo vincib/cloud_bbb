@@ -25,14 +25,15 @@ class Admin implements ISettings {
 	 */
 	public function getForm() {
 		$parameters = [
-			'api.url' => $this->config->getAppValue('bbb', 'api.url'),
-			'api.secret' => $this->config->getAppValue('bbb', 'api.secret'),
 			'app.navigation' => $this->config->getAppValue('bbb', 'app.navigation') === 'true' ? 'checked' : '',
 			'join.theme' => $this->config->getAppValue('bbb', 'join.theme') === 'true' ? 'checked' : '',
 			'app.shortener' => $this->config->getAppValue('bbb', 'app.shortener'),
 			'join.mediaCheck' => $this->config->getAppValue('bbb', 'join.mediaCheck', 'true') === 'true' ? 'checked' : '',
 		];
-
+		if (!$this->config->getSystemValue('bbb.api.url')) {
+			$parameters['api.url'] = $this->config->getAppValue('bbb', 'api.url');
+			$parameters['api.secret'] = $this->config->getAppValue('bbb', 'api.secret');
+		}
 		return new TemplateResponse('bbb', 'admin', $parameters);
 	}
 

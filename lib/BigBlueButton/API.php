@@ -83,8 +83,13 @@ class API {
 
 	private function getServer(): BigBlueButton {
 		if (!$this->server) {
-			$apiUrl = $this->config->getAppValue('bbb', 'api.url');
-			$secret = $this->config->getAppValue('bbb', 'api.secret');
+			if ($this->config->getSystemValue('bbb.api.url')) {
+				$apiUrl = $this->config->getSystemValue('bbb.api.url');
+				$secret = $this->config->getSystemValue('bbb.api.secret');
+			} else { 
+				$apiUrl = $this->config->getAppValue('bbb', 'api.url');
+				$secret = $this->config->getAppValue('bbb', 'api.secret');
+			}
 
 			$this->server = new BigBlueButton($apiUrl, $secret);
 		}
